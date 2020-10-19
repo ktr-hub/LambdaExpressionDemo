@@ -30,7 +30,28 @@ namespace LambdaDemo
             //UC 6: Skip records below 60
             SkipRecords(personList);
 
+            //UC 7: Remove specific name from the list
+            DeleteFromList(personList);
 
+        }
+
+        //UC 7: Remove specific name from the list
+        private static void DeleteFromList(List<Person> personList)
+        {
+            Console.Write("\nEnter the specific name to Delete from the list : ");
+            string input = Console.ReadLine();
+            if (personList.Any(e => (e.name == input)))
+            {
+                foreach (Person person in personList.FindAll(e => (e.name == input)))
+                {
+                    Console.WriteLine(person.name+" Removed Successfully...");
+                    personList.Remove(person);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No data related to your input");
+            }
         }
 
         //UC 6: Skip records below 60
@@ -47,7 +68,7 @@ namespace LambdaDemo
         //UC 5: Accessing specific name present or not
         private static void CheckNamePresent(List<Person> personList)
         {
-            Console.WriteLine("Enter a name to search : ");
+            Console.WriteLine("\nEnter a name to know whether it is present or not : ");
             string name = Console.ReadLine();
             if(personList.Any(e=>(e.name == name)))
             {
