@@ -18,26 +18,46 @@ namespace LambdaDemo
             AccessRecordsAgeWise(personList, 2, 60);
 
             //UC 3: Accessing records whose Age between 13-18
-            AccessRecordsForAges(personList, 13, 18);
+            AccessRecordsForAgesInBetween(personList, 13, 18);
+
+
+            //UC 4: Accessing average Age of the list
+            AverageOfAges(personList);
         }
 
-        private static void AccessRecordsForAges(List<Person> personList, int startAge, int endAge)
+
+        //UC 4: Accessing average Age of the list
+        private static void AverageOfAges(List<Person> personList)
         {
-            Console.WriteLine("persons with age between 13-18");
+            int sum = 0;
+            foreach(Person person in personList)
+            {
+                sum += person.age;
+            }
+            Console.WriteLine("\nAverage of the ages is : " + sum / personList.Count);
+        }
+
+        //UC 3: Accessing records whose Age between 13-18
+        private static void AccessRecordsForAgesInBetween(List<Person> personList, int startAge, int endAge)
+        {
+            Console.WriteLine("\nPersons with age between 13-18");
             foreach(Person person in personList.FindAll(e => (e.age > startAge && e.age < endAge)))
             {
                 Console.WriteLine("Name : " + person.name + "\t\tAge: " + person.age);
             }
         }
 
+        //UC 2: Accessing top 2 records whose Age below 60
         private static void AccessRecordsAgeWise(List<Person> personList,int records,int belowAge)
         {
-            Console.WriteLine("Top 2 Persons with age below 60");
+            Console.WriteLine("\nTop 2 Persons with age below 60");
             foreach (Person person in personList.FindAll(e => (e.age < belowAge)).Take(records).ToList())
             {
                 Console.WriteLine("Name : " + person.name + "\t\tAge: " + person.age);
             }
         }
+
+        //UC 1: Creating list and insert records
         private static void AddRecords(List<Person> personList)
         {
             personList.Add(new Person(100, "ktr", "palasa", 22));
