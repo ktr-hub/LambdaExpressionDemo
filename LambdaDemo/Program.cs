@@ -23,9 +23,26 @@ namespace LambdaDemo
 
             //UC 4: Accessing average Age of the list
             AverageOfAges(personList);
+
+            //UC 5: Accessing specific name present or not
+            CheckNamePresent(personList);
             
         }
 
+        //UC 5: Accessing specific name present or not
+        private static void CheckNamePresent(List<Person> personList)
+        {
+            Console.WriteLine("Enter a name to search : ");
+            string name = Console.ReadLine();
+            if(personList.Any(e=>(e.name == name)))
+            {
+                Console.WriteLine("Person is there ");
+            }
+            else
+            {
+                Console.WriteLine("Person Not found");
+            }
+        }
 
         //UC 4: Accessing average Age of the list
         private static void AverageOfAges(List<Person> personList)
