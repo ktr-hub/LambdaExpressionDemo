@@ -26,7 +26,22 @@ namespace LambdaDemo
 
             //UC 5: Accessing specific name present or not
             CheckNamePresent(personList);
-            
+
+            //UC 6: Skip records below 60
+            SkipRecords(personList);
+
+
+        }
+
+        //UC 6: Skip records below 60
+        private static void SkipRecords(List<Person> personList)
+        {
+            Console.WriteLine("\nSkipping Records age below 60 ");
+            foreach(Person person in personList.FindAll(e=>(e.age<60)))
+            {
+                Console.WriteLine("Removing person : " + person.name + " with age : "+person.age);
+                personList.Remove(person);
+            }
         }
 
         //UC 5: Accessing specific name present or not
