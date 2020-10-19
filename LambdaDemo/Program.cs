@@ -23,27 +23,30 @@ namespace LambdaDemo
 
             //UC 4: Accessing average Age of the list
             AverageOfAges(personList);
+            
         }
 
 
         //UC 4: Accessing average Age of the list
         private static void AverageOfAges(List<Person> personList)
         {
-            int sum = 0;
-            foreach(Person person in personList)
-            {
-                sum += person.age;
-            }
-            Console.WriteLine("\nAverage of the ages is : " + sum / personList.Count);
+            Console.WriteLine("\nAverage of the ages is : " +personList.Average(e=>e.age));
         }
 
         //UC 3: Accessing records whose Age between 13-18
         private static void AccessRecordsForAgesInBetween(List<Person> personList, int startAge, int endAge)
         {
-            Console.WriteLine("\nPersons with age between 13-18");
-            foreach(Person person in personList.FindAll(e => (e.age > startAge && e.age < endAge)))
+            if (personList.Any(e => (e.age>13 && e.age<18))) 
             {
-                Console.WriteLine("Name : " + person.name + "\t\tAge: " + person.age);
+                Console.WriteLine("\nPersons with age between 13-18");
+                foreach (Person person in personList.FindAll(e => (e.age > startAge && e.age < endAge)))
+                {
+                    Console.WriteLine("Name : " + person.name + "\t\tAge: " + person.age);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No data for specified Range");
             }
         }
 
