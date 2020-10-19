@@ -7,10 +7,10 @@ namespace LambdaDemo
 
     class Person
     {
-        private int SSN;
-        private string name;
-        private string address;
-        private int age;
+        public int SSN;
+        public string name;
+        public string address;
+        public int age;
 
         public Person(int SSN,string name,string address,int age)
         {
